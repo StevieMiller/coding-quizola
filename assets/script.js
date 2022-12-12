@@ -3,7 +3,7 @@ const startButton = document.getElementById("start-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
-const hideHeading = document.getElementById("container");
+const hideHeading = document.getElementById("heading");
 
 var timerEl = document.getElementById("timer");
 
