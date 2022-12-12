@@ -16,7 +16,6 @@ startButton.addEventListener("click", countdown);
 function startGame() {
   console.log("Started");
   startButton.classList.add("hide");
-  questionContainerElement.classList.remove("hide");
   hideHeading.classList.add("hide");
   nextButton.classList.remove("hide");
 }
@@ -25,48 +24,43 @@ function startGame() {
 const questions = [
   {
     question: "Which of the following is not a data type?",
-    answers: [
-      { text: "String", correct: false },
-      { text: "Boolean", correct: false },
-      { text: "Number", correct: false },
-      { text: "Function", correct: true },
-    ],
+    answers: ["String", "Boolean", "Number", "Function"],
+    correct: "Function",
   },
   {
     question: "Where is the correct place to insert the JavaScript file?",
     answers: [
-      { text: "The body section", correct: true },
-      { text: "The head section", correct: false },
-      { text: "Both the head and body sections", correct: false },
-      { text: "It can be placed anywhere", correct: false },
+      "The body section",
+      "The head section",
+      "Both the head and body sections",
+      "It can be placed anywhere",
     ],
+    correct: "The body section",
   },
   {
     question: "Which of the following is not an operator in JavaScript?",
-    answers: [
-      { text: "+", correct: false },
-      { text: "-", correct: false },
-      { text: "~", correct: true },
-      { text: "*", correct: false },
-    ],
+    answers: ["+", "-", "~", "*"],
+    correct: "~",
   },
   {
     question: "How do you call a function named myFunction?",
     answers: [
-      { text: "call function myFunction()", correct: false },
-      { text: "myFunction", correct: true },
-      { text: "call myFunction", correct: false },
-      { text: "Function = myFunction()", correct: true },
+      "call function myFunction()",
+      "myFunction()",
+      "call myFunction",
+      "Function = myFunction()",
     ],
+    correct: "myFunction()",
   },
   {
     question: "What does NaN stand for?",
     answers: [
-      { text: "Not a number", correct: true },
-      { text: "Never a number", correct: false },
-      { text: "Nix a number", correct: false },
-      { text: "Number and numeric", correct: false },
+      "Not a number",
+      "Never a number",
+      "Nix a number",
+      "Number and numeric",
     ],
+    correct: "Not a number",
   },
 ];
 
@@ -75,9 +69,11 @@ var questionsIndex = 0;
 // Function that displays the question
 function currentQuestion() {
   questionContainerElement.innerHTML = "";
+  questionContainerElement.textContent = questions[questionsIndex].question;
   for (var i = 0; i < questions.length; i++) {
     console.log(questions[questionsIndex].questions);
   }
+  for (var i = 0; i < questions[questionsIndex].answers.length; i++) {}
 }
 
 currentQuestion();
