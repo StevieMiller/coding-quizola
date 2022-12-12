@@ -1,5 +1,6 @@
 // Global variables
 const startButton = document.getElementById("start-btn");
+const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
@@ -11,14 +12,16 @@ var timerEl = document.getElementById("timer");
 startButton.addEventListener("click", startGame);
 startButton.addEventListener("click", countdown);
 
-// function that starts the quiz
+// Function that starts the quiz
 function startGame() {
   console.log("Started");
   startButton.classList.add("hide");
   questionContainerElement.classList.remove("hide");
   hideHeading.classList.add("hide");
+  nextButton.classList.remove("hide");
 }
 
+// Array that holds quiz questions
 const questions = [
   {
     question: "Which of the following is not a data type?",
@@ -66,6 +69,18 @@ const questions = [
     ],
   },
 ];
+
+// Variable grabs the first question in the array
+var questionsIndex = 0;
+// Function that displays the question
+function currentQuestion() {
+  questionContainerElement.innerHTML = "";
+  for (var i = 0; i < questions.length; i++) {
+    console.log(questions[questionsIndex].questions);
+  }
+}
+
+currentQuestion();
 
 // Timer that counts down from 60
 function countdown() {
