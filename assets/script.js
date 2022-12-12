@@ -3,7 +3,7 @@ const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
-const answerButtonsElement = document.getElementById("answer-buttons");
+const answerButtonsElement = document.querySelectorAll(".btn");
 const hideHeading = document.getElementById("heading");
 
 var timerEl = document.getElementById("timer");
@@ -18,6 +18,8 @@ function startGame() {
   startButton.classList.add("hide");
   hideHeading.classList.add("hide");
   nextButton.classList.remove("hide");
+  questionContainerElement.classList.remove("hide");
+  currentQuestion();
 }
 
 // Array that holds quiz questions
@@ -68,15 +70,13 @@ const questions = [
 var questionsIndex = 0;
 // Function that displays the question
 function currentQuestion() {
-  questionContainerElement.innerHTML = "";
-  questionContainerElement.textContent = questions[questionsIndex].question;
-  for (var i = 0; i < questions.length; i++) {
-    console.log(questions[questionsIndex].questions);
+  questionElement.textContent = questions[questionsIndex].question;
+  for (var i = 0; i < answerButtonsElement.length; i++) {
+    answerButtonsElement[i].textContent = questions[questionsIndex].answers[i];
+    console.log(answerButtonsElement[i]);
+    nextButton.addEventListener("click", currentQuestion);
   }
-  for (var i = 0; i < questions[questionsIndex].answers.length; i++) {}
 }
-
-currentQuestion();
 
 // Timer that counts down from 60
 function countdown() {

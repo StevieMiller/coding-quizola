@@ -47,7 +47,9 @@ body {
   margin: 3px;
   padding: 5px 10px;
 }
-.btn:hover {
+.btn:hover,
+.start-btn:hover,
+.next-btn:hover {
   background-color: var(--hover-color);
 }
 .start-btn {
