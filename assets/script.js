@@ -67,6 +67,7 @@ const questions = [
 // Variable grabs the first question in the array
 var questionsIndex = 0;
 var nextQuestion = questions[questionsIndex];
+var nextAnswers = questions.answers;
 console.log(nextQuestion.question);
 
 // Function that displays the question
@@ -77,6 +78,7 @@ function currentQuestion() {
     questionElement[i].textContent = questions[questionsIndex].answers[i];
     console.log(questionElement[i]);
   }
+  answerButtonsElement.textContent = questions.answers;
 }
 
 // Timer that counts down from 60
