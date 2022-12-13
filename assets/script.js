@@ -66,19 +66,18 @@ const questions = [
 
 // Variable grabs the first question in the array
 var questionsIndex = 0;
+var answersIndex = 0;
 var nextQuestion = questions[questionsIndex];
-var nextAnswers = questions.answers;
+var nextAnswers = questions[answersIndex];
 console.log(nextQuestion.question);
 
 // Function that displays the question
 function currentQuestion() {
   questionElement.textContent = nextQuestion.question;
-  for (let i = 0; i < questionsIndex.length; i++) {
+  for (var i = 0; i < questionsIndex.length; i++) {
     answerButtonsElement.addEventListener("click", questionElement);
     questionElement[i].textContent = questions[questionsIndex].answers[i];
-    console.log(questionElement[i]);
   }
-  answerButtonsElement.textContent = questions.answers;
 }
 
 // Timer that counts down from 60
