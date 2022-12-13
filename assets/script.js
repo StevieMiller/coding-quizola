@@ -1,6 +1,5 @@
 // Global variables
 const startButton = document.getElementById("start-btn");
-const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.querySelectorAll(".btn");
@@ -17,7 +16,6 @@ function startGame() {
   console.log("Started");
   startButton.classList.add("hide");
   hideHeading.classList.add("hide");
-  nextButton.classList.remove("hide");
   questionContainerElement.classList.remove("hide");
   currentQuestion();
 }
@@ -68,13 +66,16 @@ const questions = [
 
 // Variable grabs the first question in the array
 var questionsIndex = 0;
+var nextQuestion = questions[questionsIndex];
+console.log(nextQuestion.question);
+
 // Function that displays the question
 function currentQuestion() {
-  questionElement.textContent = questions[questionsIndex].question;
-  for (var i = 0; i < answerButtonsElement.length; i++) {
-    answerButtonsElement[i].textContent = questions[questionsIndex].answers[i];
-    console.log(answerButtonsElement[i]);
-    nextButton.addEventListener("click", currentQuestion);
+  questionElement.textContent = nextQuestion.question;
+  for (let i = 0; i < questionsIndex.length; i++) {
+    answerButtonsElement.addEventListener("click", questionElement);
+    questionElement[i].textContent = questions[questionsIndex].answers[i];
+    console.log(questionElement[i]);
   }
 }
 
