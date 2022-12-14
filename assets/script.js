@@ -7,17 +7,20 @@ const hideHeading = document.getElementById("heading");
 
 var timerEl = document.getElementById("timer");
 
-// Event listener that starts game on click
+// Event listener starts game when start button is clicked
 startButton.addEventListener("click", startGame);
+
+// Event listener starts countdown when start button is clicked
 startButton.addEventListener("click", countdown);
 
-// Function that starts the quiz
+// startGame function is called when the start button is clicked
 function startGame() {
   console.log("Started");
   startButton.classList.add("hide");
   hideHeading.classList.add("hide");
   questionContainerElement.classList.remove("hide");
-  currentQuestion();
+  // setQuestion function is called when the start button is clicked
+  setQuestion();
 }
 
 // Array that holds quiz questions
@@ -64,23 +67,35 @@ const questions = [
   },
 ];
 
-// Variable grabs the first question in the array
-var questionsIndex = 0;
-var answersIndex = 0;
-var nextQuestion = questions[questionsIndex];
-var nextAnswers = questions[answersIndex];
-console.log(nextQuestion.question);
-
-// Function that displays the question
-function currentQuestion() {
-  questionElement.textContent = nextQuestion.question;
-  for (var i = 0; i < questionsIndex.length; i++) {
-    answerButtonsElement.addEventListener("click", questionElement);
-    questionElement[i].textContent = questions[questionsIndex].answers[i];
+// setQuestion function is called when the start button is clicked
+function setQuestion() {
+  for (let key in questions) {
+    console.log(key + ": " + questions[key]);
   }
 }
+// questionContainerElement.innerHTML = "";
+// Code that sets and loops through questions
+// for (var i = 0; 1 < 5; i++) {}
+// }
 
-// Timer that counts down from 60
+// Variable grabs the first question in the array
+
+// var questionsIndex = 0;
+// var answersIndex = 0;
+// var nextQuestion = questions[questionsIndex];
+// var nextAnswers = questions[answersIndex];
+// console.log(nextQuestion.question);
+
+// Function that displays the question
+// function currentQuestion() {
+// questionElement.textContent = nextQuestion.question;
+// for (var i = 0; i < questionsIndex.length; i++) {
+// answerButtonsElement.addEventListener("click", questionElement);
+// questionElement[i].textContent = questions[questionsIndex].answers[i];
+// }
+// }
+
+// countdown function is called when start button is clicked
 function countdown() {
   var timeLeft = 60;
 
@@ -95,7 +110,7 @@ function countdown() {
       timerEl.textContent = timeLeft + " second remaining";
       timeLeft--;
     } else {
-      //Once 'timeLeft' gets to 0, set 'timerEl' to an empty string
+      // Once 'timeLeft' gets to 0, set 'timerEl' to an empty string
       timerEl.textContent = "";
       // Use 'clearInterval' to stop the timer
       clearInterval(timeInterval);
