@@ -68,11 +68,12 @@ const questions = [
 ];
 
 // setQuestion function is called when the start button is clicked
-function setQuestion() {
-  for (let key in questions) {
-    console.log(key + ": " + questions[key]);
-  }
-}
+
+// function setQuestion() {
+// for (let key in questions) {
+// console.log(key + ": " + questions[key]);
+// }
+// }
 // questionContainerElement.innerHTML = "";
 // Code that sets and loops through questions
 // for (var i = 0; 1 < 5; i++) {}
