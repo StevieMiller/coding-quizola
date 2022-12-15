@@ -2,10 +2,12 @@
 const startButton = document.getElementById("start-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
-const answerButtonsElement = document.querySelectorAll(".btn");
+const answerButtonsElement = document.getElementById("answers");
 const hideHeading = document.getElementById("heading");
 
 var timerEl = document.getElementById("timer");
+
+let chosenAnswer;
 
 // Event listener starts game when start button is clicked
 startButton.addEventListener("click", startGame);
@@ -20,7 +22,9 @@ function startGame() {
   hideHeading.classList.add("hide");
   questionContainerElement.classList.remove("hide");
   // setQuestion function is called when the start button is clicked
-  setQuestion();
+  // setQuestion();
+  currentQuestion();
+  currentAnswers();
 }
 
 // Array that holds quiz questions
@@ -68,11 +72,10 @@ const questions = [
 ];
 
 // setQuestion function is called when the start button is clicked
-
 // function setQuestion() {
-// for (let key in questions) {
-// console.log(key + ": " + questions[key]);
-// }
+//  for (let key in questions) {
+//    console.log(key + ": " + questions[key]);
+//  }
 // }
 // questionContainerElement.innerHTML = "";
 // Code that sets and loops through questions
@@ -81,20 +84,40 @@ const questions = [
 
 // Variable grabs the first question in the array
 
-// var questionsIndex = 0;
-// var answersIndex = 0;
-// var nextQuestion = questions[questionsIndex];
-// var nextAnswers = questions[answersIndex];
-// console.log(nextQuestion.question);
+var questionsIndex = 0;
+var answersIndex = 0;
+var correctIndex = 0;
+var nextQuestion = questions[questionsIndex];
+var nextAnswers = questions[answersIndex];
+var correctAnswer = questions[correctIndex];
+console.log(nextQuestion.question);
+console.log(nextAnswers.answers);
+console.log(correctAnswer.correct);
+console.log(nextAnswers.answers[0]);
+console.log(nextAnswers.answers[1]);
 
 // Function that displays the question
-// function currentQuestion() {
-// questionElement.textContent = nextQuestion.question;
-// for (var i = 0; i < questionsIndex.length; i++) {
-// answerButtonsElement.addEventListener("click", questionElement);
-// questionElement[i].textContent = questions[questionsIndex].answers[i];
-// }
-// }
+function currentQuestion() {
+  questionElement.textContent = nextQuestion.question;
+  for (var i = 0; i < questionsIndex.length; i++) {
+    // answerButtonsElement.addEventListener("click", questionElement);
+    // questionElement[i].textContent = questions[questionsIndex].answers[i];
+  }
+}
+// Function that displays answer options
+function currentAnswers() {
+  answerButtonsElement.textContent = nextAnswers.answers;
+  for (var i = 0; i < answersIndex.length; i++) {
+    // write code to pull answers from array by index
+    // add event listener to present next question on click
+  }
+}
+// Function that checks for correct/incorrect answers and deducts time from the clock
+function correctAnswers() {
+  if (chosenAnswer === false) {
+    // Subtract time from the timer
+  }
+}
 
 // countdown function is called when start button is clicked
 function countdown() {
