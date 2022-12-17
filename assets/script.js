@@ -5,36 +5,16 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answers");
 const hideHeading = document.getElementById("heading");
 
-var timerEl = document.getElementById("timer");
-
-let chosenAnswer;
-
-// Event listener starts game when start button is clicked
-startButton.addEventListener("click", startGame);
-
-// Event listener starts countdown when start button is clicked
-startButton.addEventListener("click", countdown);
-
-// startGame function is called when the start button is clicked
-function startGame() {
-  console.log("Started");
-  startButton.classList.add("hide");
-  hideHeading.classList.add("hide");
-  questionContainerElement.classList.remove("hide");
-  // setQuestion function is called when the start button is clicked
-  // setQuestion();
-  currentQuestion();
-  currentAnswers();
-}
+let questionIndex;
 
 // Array that holds quiz questions
 const questions = [
-  {
+  question1 = {
     question: "Which of the following is not a data type?",
     answers: ["String", "Boolean", "Number", "Function"],
     correct: "Function",
   },
-  {
+  question2 = {
     question: "Where is the correct place to insert the JavaScript file?",
     answers: [
       "The body section",
@@ -42,64 +22,81 @@ const questions = [
       "Both the head and body sections",
       "It can be placed anywhere",
     ],
-    correct: "The body section",
+    correct: "Both the head and body sections",
   },
-  {
+  question3 = {
     question: "Which of the following is not an operator in JavaScript?",
     answers: ["+", "-", "~", "*"],
     correct: "~",
   },
-  {
-    question: "How do you call a function named myFunction?",
-    answers: [
-      "call function myFunction()",
-      "myFunction()",
-      "call myFunction",
-      "Function = myFunction()",
-    ],
-    correct: "myFunction()",
-  },
-  {
-    question: "What does NaN stand for?",
-    answers: [
-      "Not a number",
-      "Never a number",
-      "Nix a number",
-      "Number and numeric",
-    ],
-    correct: "Not a number",
-  },
+  // {
+  //   question: "How do you call a function named myFunction?",
+  //   answers: [
+  //     "call function myFunction()",
+  //     "myFunction()",
+  //     "call myFunction",
+  //     "Function = myFunction()",
+  //   ],
+  //   correct: "myFunction()",
+  // },
+  // {
+  //   question: "What does NaN stand for?",
+  //   answers: [
+  //     "Not a number",
+  //     "Never a number",
+  //     "Nix a number",
+  //     "Number and numeric",
+  //   ],
+  //   correct: "Not a number",
+  // },
 ];
+var timerEl = document.getElementById("timer");
 
-// setQuestion function is called when the start button is clicked
-// function setQuestion() {
-//  for (let key in questions) {
-//    console.log(key + ": " + questions[key]);
-//  }
-// }
-// questionContainerElement.innerHTML = "";
-// Code that sets and loops through questions
-// for (var i = 0; 1 < 5; i++) {}
-// }
+let chosenAnswer;
 
-// Variable grabs the first question in the array
+// Event listener starts game when start button is clicked
+startButton.addEventListener("click", startGame);
+const orderOfQuestions = (arr) => {
+  let arrIndex = [];
+  for (let i = 0; i < arr.length; i++) {
+    arrIndex.push(i);
+  }
+  return arrIndex;
+};
+// startGame function is called when the start button is clicked
+function startGame() {
+  console.log("Started");
+  startButton.classList.add("hide");
+  hideHeading.classList.add("hide");
+  questionContainerElement.classList.remove("hide");
+  questionIndex = 0;
+  questionOrderArray = orderOfQuestions(questions);
 
-var questionsIndex = 0;
-var answersIndex = 0;
-var correctIndex = 0;
-var nextQuestion = questions[questionsIndex];
-var nextAnswers = questions[answersIndex];
-var correctAnswer = questions[correctIndex];
-console.log(nextQuestion.question);
-console.log(nextAnswers.answers);
-console.log(correctAnswer.correct);
-console.log(nextAnswers.answers[0]);
-console.log(nextAnswers.answers[1]);
+  currentQuestion(questions, questionOrderArray[questionIndex]);
+  countdown();
+}
 
 // Function that displays the question
-function currentQuestion() {
-  questionElement.textContent = nextQuestion.question;
-  for (var i = 0; i < questionsIndex.length; i++) {
+function currentQuestion(array, indexOfQuestions) {
+  console.log("questions", array[indexOfQuestions]);
+
+  // console.log(indexOfQuestions)
+  questionElement.textContent = array[indexOfQuestions].question;
+  let currentAnswerArray = array[indexOfQuestions].answers
+  console.log(currentAnswerArray)
+  let answ;
+  let button;
+  for (var i = 0; i < currentAnswerArray.length; i++) {
+
+    answ = document.createElement('li');
+    button = document.createElement('button')
+    button.textContent = currentAnswerArray[i]
+    answ.appendChild(button)
+    answ.addEventListener('click', correctAnswers)
+    answerButtonsElement.appendChild(answ)
+    
+    // console.log("questionIndex line 104", questions[i]);
+    // console.log(questions[i].answers);
     // answerButtonsElement.addEventListener("click", questionElement);
     // questionElement[i].textContent = questions[questionsIndex].answers[i];
   }
@@ -108,16 +105,23 @@ function currentQuestion() {
 function currentAnswers() {
   answerButtonsElement.textContent = nextAnswers.answers;
   for (var i = 0; i < answersIndex.length; i++) {
+    console.log("answer line 113", answersIndex[i]);
     // write code to pull answers from array by index
     // add event listener to present next question on click
   }
 }
 // Function that checks for correct/incorrect answers and deducts time from the clock
 function correctAnswers() {
+  alert('clicked')
+  
+
+
   if (chosenAnswer === false) {
     // Subtract time from the timer
+    currentQuestion(questions, )
   }
 }
+
 
 // countdown function is called when start button is clicked
 function countdown() {
