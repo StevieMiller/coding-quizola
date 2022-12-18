@@ -72,27 +72,26 @@ function currentQuestion(array, indexOfQuestions) {
     button = document.createElement('button')
     button.textContent = currentAnswerArray[i]
     answ.appendChild(button)
-    answ.addEventListener('click', correctAnswers)
+    answ.addEventListener('click', (event) => correctAnswers(event, array[indexOfQuestions].correct))
     answerButtonsElement.appendChild(answ)
   }
 }
 
 // Function that checks for correct/incorrect answers and deducts time from the clock
-function correctAnswers(event) {
+function correctAnswers(event, correctAns) {
   console.log(event.target)
-  var chosenAnswer = event.target
+  var chosenAnswer = event.target.textContent
   console.log(chosenAnswer);
-  alert('clicked')
-  if (chosenAnswer === true) {
+  // alert('clicked')
+  if (chosenAnswer === correctAns) {
     alert('Correct!')
   } else {
-    // If answer is incorrect, subtract time from the timer
-    (chosenAnswer === false)
-    timeLeft = (timeLeft - 5);
     alert('Incorrect!')
-    currentQuestion(questions, )
+    // currentQuestion(questions, )
   }
 }
+
+currentQuestion();
 
 // countdown function is called when start button is clicked
 function countdown() {
