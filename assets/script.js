@@ -60,15 +60,23 @@ function startQuiz() {
 }
 
 // Function that displays the question and answers
+// Function pulls array and index data as parameters
 function currentQuestion(array, indexOfQuestions) {
   console.log("questions", array[indexOfQuestions]);
+// Renders question to the page
   questionElement.textContent = array[indexOfQuestions].question;
   let currentAnswerArray = array[indexOfQuestions].answers
   console.log(currentAnswerArray)
   let answ;
   let button;
+
+  answerButtonsElement.textContent = "";
+
   for (var i = 0; i < currentAnswerArray.length; i++) {
+// Renders answers to the page
+// Creates list items for answers
     answ = document.createElement('li');
+// Creates buttons for answers
     button = document.createElement('button')
     button.textContent = currentAnswerArray[i]
     answ.appendChild(button)
@@ -77,21 +85,27 @@ function currentQuestion(array, indexOfQuestions) {
   }
 }
 
+
 // Function that checks for correct/incorrect answers and deducts time from the clock
+// Pulls correct answer data and click event as parameters
 function correctAnswers(event, correctAns) {
   console.log(event.target)
+  // Variable stores correct answer data 
   var chosenAnswer = event.target.textContent
   console.log(chosenAnswer);
-  // alert('clicked')
+  // Evaluates whether or not correct answer was chosen
   if (chosenAnswer === correctAns) {
     alert('Correct!')
   } else {
+    // If answer is incorrect, time is subtracted from the clock
+    timeLeft = (timeLeft - 5);
     alert('Incorrect!')
-    // currentQuestion(questions, )
+    currentQuestion(questions, questionIndex)
   }
-}
 
-currentQuestion();
+  questionIndex++
+  currentQuestion(questions, questionIndex)
+}
 
 // countdown function is called when start button is clicked
 function countdown() {
@@ -114,4 +128,7 @@ function countdown() {
       clearInterval(timeInterval);
     }
   }, 1000);
+}
+function endQuiz() {
+  clearInterval(timer);
 }
