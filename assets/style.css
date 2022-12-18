@@ -32,34 +32,22 @@ body {
   padding: 10px;
   box-shadow: 0 0 10px 2px;
 }
-
-.btn-grid {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 0;
-  padding: 10px;
-}
-.btn {
+button {
   background-color: var(--btn-color);
   color: var(--btn-text);
+  margin: 5px;
+  padding: 5px;
   border: none;
   border-radius: 5px;
-  margin: 3px;
-  padding: 5px 10px;
 }
-.btn:hover,
-.start-btn:hover,
-.next-btn:hover {
+button:hover {
+  background-color: var(--hover-color);
+}
+
+.start-btn:hover {
   background-color: var(--hover-color);
 }
 .start-btn {
-  background-color: var(--btn-color);
-  color: var(--btn-text);
-  padding: 1em;
-  border-radius: 5px;
-  border: none;
-}
-.next-btn {
   background-color: var(--btn-color);
   color: var(--btn-text);
   padding: 1em;

@@ -5,7 +5,12 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answers");
 const hideHeading = document.getElementById("heading");
 
+var timerEl = document.getElementById("timer");
+var timeLeft;
+
+
 let questionIndex;
+let chosenAnswer;
 
 // Array that holds quiz questions
 const questions = [
@@ -29,33 +34,10 @@ const questions = [
     answers: ["+", "-", "~", "*"],
     correct: "~",
   },
-  // {
-  //   question: "How do you call a function named myFunction?",
-  //   answers: [
-  //     "call function myFunction()",
-  //     "myFunction()",
-  //     "call myFunction",
-  //     "Function = myFunction()",
-  //   ],
-  //   correct: "myFunction()",
-  // },
-  // {
-  //   question: "What does NaN stand for?",
-  //   answers: [
-  //     "Not a number",
-  //     "Never a number",
-  //     "Nix a number",
-  //     "Number and numeric",
-  //   ],
-  //   correct: "Not a number",
-  // },
 ];
-var timerEl = document.getElementById("timer");
 
-let chosenAnswer;
-
-// Event listener starts game when start button is clicked
-startButton.addEventListener("click", startGame);
+// Event listener starts quiz when start button is clicked
+startButton.addEventListener("click", startQuiz);
 const orderOfQuestions = (arr) => {
   let arrIndex = [];
   for (let i = 0; i < arr.length; i++) {
@@ -63,8 +45,9 @@ const orderOfQuestions = (arr) => {
   }
   return arrIndex;
 };
+
 // startGame function is called when the start button is clicked
-function startGame() {
+function startQuiz() {
   console.log("Started");
   startButton.classList.add("hide");
   hideHeading.classList.add("hide");
@@ -76,7 +59,7 @@ function startGame() {
   countdown();
 }
 
-// Function that displays the question
+// Function that displays the question and answers
 function currentQuestion(array, indexOfQuestions) {
   console.log("questions", array[indexOfQuestions]);
 
@@ -94,34 +77,22 @@ function currentQuestion(array, indexOfQuestions) {
     answ.appendChild(button)
     answ.addEventListener('click', correctAnswers)
     answerButtonsElement.appendChild(answ)
-    
-    // console.log("questionIndex line 104", questions[i]);
-    // console.log(questions[i].answers);
-    // answerButtonsElement.addEventListener("click", questionElement);
-    // questionElement[i].textContent = questions[questionsIndex].answers[i];
   }
 }
-// Function that displays answer options
-function currentAnswers() {
-  answerButtonsElement.textContent = nextAnswers.answers;
-  for (var i = 0; i < answersIndex.length; i++) {
-    console.log("answer line 113", answersIndex[i]);
-    // write code to pull answers from array by index
-    // add event listener to present next question on click
-  }
-}
+
 // Function that checks for correct/incorrect answers and deducts time from the clock
 function correctAnswers() {
   alert('clicked')
-  
-
-
-  if (chosenAnswer === false) {
-    // Subtract time from the timer
+  if (chosenAnswer === true) {
+    alert('Correct!')
+  } else {
+    // If answer is incorrect, subtract time from the timer
+    (chosenAnswer === false)
+    timeLeft = (timeLeft - 5);
+    alert('Incorrect!')
     currentQuestion(questions, )
   }
 }
-
 
 // countdown function is called when start button is clicked
 function countdown() {
