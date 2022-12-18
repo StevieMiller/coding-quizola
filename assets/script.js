@@ -6,10 +6,7 @@ const answerButtonsElement = document.getElementById("answers");
 const hideHeading = document.getElementById("heading");
 
 var timerEl = document.getElementById("timer");
-var timeLeft;
-
-
-
+var timeLeft = 60;
 let questionIndex;
 
 // Array that holds quiz questions
@@ -99,7 +96,7 @@ function correctAnswers(event, correctAns) {
   } else {
     // If answer is incorrect, time is subtracted from the clock
     alert('Incorrect!')
-    timeLeft = (timeLeft - 5);
+    timeLeft = timeLeft - 10;
     currentQuestion(questions, questionIndex)
   }
 
@@ -109,7 +106,6 @@ function correctAnswers(event, correctAns) {
 
 // countdown function is called when start button is clicked
 function countdown() {
-  var timeLeft = 60;
 
   var timeInterval = setInterval(function () {
     // As long as the 'timeLeft' is greater than 1
