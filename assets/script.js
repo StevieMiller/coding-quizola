@@ -10,7 +10,6 @@ var timeLeft;
 
 
 let questionIndex;
-let chosenAnswer;
 
 // Array that holds quiz questions
 const questions = [
@@ -62,15 +61,12 @@ function startQuiz() {
 // Function that displays the question and answers
 function currentQuestion(array, indexOfQuestions) {
   console.log("questions", array[indexOfQuestions]);
-
-  // console.log(indexOfQuestions)
   questionElement.textContent = array[indexOfQuestions].question;
   let currentAnswerArray = array[indexOfQuestions].answers
   console.log(currentAnswerArray)
   let answ;
   let button;
   for (var i = 0; i < currentAnswerArray.length; i++) {
-
     answ = document.createElement('li');
     button = document.createElement('button')
     button.textContent = currentAnswerArray[i]
@@ -79,6 +75,9 @@ function currentQuestion(array, indexOfQuestions) {
     answerButtonsElement.appendChild(answ)
   }
 }
+
+let chosenAnswer = questions.correct;
+console.log(chosenAnswer);
 
 // Function that checks for correct/incorrect answers and deducts time from the clock
 function correctAnswers() {
