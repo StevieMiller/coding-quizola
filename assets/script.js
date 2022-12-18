@@ -98,8 +98,8 @@ function correctAnswers(event, correctAns) {
     alert('Correct!')
   } else {
     // If answer is incorrect, time is subtracted from the clock
-    timeLeft = (timeLeft - 5);
     alert('Incorrect!')
+    timeLeft = (timeLeft - 5);
     currentQuestion(questions, questionIndex)
   }
 
@@ -128,7 +128,4 @@ function countdown() {
       clearInterval(timeInterval);
     }
   }, 1000);
-}
-function endQuiz() {
-  clearInterval(timer);
 }
