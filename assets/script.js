@@ -9,6 +9,7 @@ var timerEl = document.getElementById("timer");
 var timeLeft;
 
 
+
 let questionIndex;
 
 // Array that holds quiz questions
@@ -76,11 +77,11 @@ function currentQuestion(array, indexOfQuestions) {
   }
 }
 
-let chosenAnswer = questions.correct;
-console.log(chosenAnswer);
-
 // Function that checks for correct/incorrect answers and deducts time from the clock
-function correctAnswers() {
+function correctAnswers(event) {
+  console.log(event.target)
+  var chosenAnswer = event.target
+  console.log(chosenAnswer);
   alert('clicked')
   if (chosenAnswer === true) {
     alert('Correct!')
