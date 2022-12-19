@@ -82,7 +82,6 @@ function currentQuestion(array, indexOfQuestions) {
   }
 }
 
-
 // Function that checks for correct/incorrect answers and deducts time from the clock
 // Pulls correct answer data and click event as parameters
 function correctAnswers(event, correctAns) {
